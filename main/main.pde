@@ -19,6 +19,7 @@ void draw() {
   background(255);
   for (int i = 0; i < balls1.size(); i++) {
     Ball b = balls1.get(i);
+    b.calcPath(gravity);
 
     if (firing1) {
       b.applyForce(gravity);
@@ -39,7 +40,7 @@ void draw() {
       b.update();
       b.display();
       if (b.isDone()) {
-        handleReset(1);
+        handleReset(2);
         b.reset(2);
       }
     }
@@ -62,6 +63,10 @@ void keyPressed() {
   if (key == 'e' && !firing1) {
     firing1 = true;
   }
+  
+  if (key == 'o' && !firing2) {
+    firing2 = true;
+  }
 
   if (key == 's') {
     if (!firing1) {
@@ -71,7 +76,9 @@ void keyPressed() {
 
   if (key == 'w') {
     if (!firing1) {
-      balls2.get(0).angUp();
+      balls1.get(0).angUp();
     }
   }
+  
+  
 }

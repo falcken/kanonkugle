@@ -4,13 +4,15 @@ class Ball {
   PVector acceleration;
 
   float angle = 270;
+  float startVelo;
 
   Ball(float x, float y) {
     location = new PVector(x, y);
-    velocity = new PVector(5, -5);
+    velocity = new PVector(5, 0);
     acceleration = new PVector();
 
     velocity.rotate(angle);
+    startVelo = velocity.mag();
   }
 
   void applyForce(PVector f) {
@@ -49,7 +51,7 @@ class Ball {
     }
     if (location.y > height-20) {
       return true;
-    }else if (location.y < 0+20) {
+    } else if (location.y < 0+20) {
       return true;
     }
     return false;
@@ -66,6 +68,19 @@ class Ball {
       for (int i = 0; i < balls2.size(); i++) {
         balls2.remove(i);
       }
+    }
+  }
+
+  void calcPath(PVector g) {
+    float gravity = 0.0982;
+    float cos = cos(radians(angle));
+    //float sin = sin(radians(angle));
+    
+    for (int x = 0; x < width; x += 10) {
+      float y = tan(radians(angle))*x-(gravity)/(2*sq(startVelo)*sq(cos))*sq(x);
+      //println(y);
+      fill(255, 0, 0);
+      ellipse(x, 400-y, 20, 20);
     }
   }
 }
