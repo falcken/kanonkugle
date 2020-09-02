@@ -1,4 +1,6 @@
-ArrayList<Ball> balls = new ArrayList<Ball>();
+ArrayList<Ball> balls1 = new ArrayList<Ball>();
+ArrayList<Ball> balls2 = new ArrayList<Ball>();
+
 PVector gravity = new PVector(0, 0.0982);
 
 int ang1;
@@ -9,26 +11,36 @@ boolean firing2 = false;
 
 void setup () {
   size(1000, 600);
-  balls.add(new Ball(270, 100, 400));
-  balls.add(new Ball(270, 600, 400));
+  balls1.add(new Ball(100, 400));
+  balls2.add(new Ball(600, 400));
 }
 
 void draw() {
   background(255);
-  for (int i = 0; i < balls.size(); i++) {
+  for (int i = 0; i < balls1.size(); i++) {
+    Ball b = balls1.get(i);
+            
     if (firing1) {
-      balls.get(0).applyForce(gravity);
-      balls.get(0).update();
+      b.applyForce(gravity);
+      b.update();
+      if (b.isDone()) {
+        b.reset(1);
+      }
     }
-    balls.get(0).display();
+    b.display();
   }
 
-  for (int i = 0; i < balls.size(); i++) {
+  for (int i = 0; i < balls2.size(); i++) {
+    Ball b = balls2.get(i);
+    
     if (firing2) {
-      balls.get(1).applyForce(gravity);
-      balls.get(1).update();
+      b.applyForce(gravity);
+      b.update();
+      if (b.isDone()) {
+        b.reset(2);
+      }
     }
-    balls.get(1).display();
+    b.display();
   }
 }
 
@@ -40,6 +52,10 @@ void keyPressed() {
   }
 
   if (key == 's') {
-    ang2 += 2;
+    balls1.get(balls1.size()).angDown();
+  }
+  
+  if (key == 'w') {
+    balls2.get(balls2.size()).angUp();
   }
 }
