@@ -47,8 +47,6 @@ void draw() {
 void keyPressed() {
   if (key == 'e' && !firing1) {
     firing1 = true;
-  } else if (key == 'e' && firing1) {
-    firing1 = false;
   }
 
   if (key == 's') {

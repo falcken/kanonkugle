@@ -40,6 +40,16 @@ class Ball {
   }
   
   boolean isDone() {
+    if (location.x+20 > width-20) {
+      return true;
+    } else if (location.x < 0+20) {
+      return true;
+    }
+    if (location.y > height-20) {
+      return true;
+    }else if (location.y < 0+20) {
+      return true;
+    }
     return false;
   }
   
