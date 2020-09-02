@@ -19,28 +19,42 @@ void draw() {
   background(255);
   for (int i = 0; i < balls1.size(); i++) {
     Ball b = balls1.get(i);
-            
+
     if (firing1) {
       b.applyForce(gravity);
       b.update();
+      b.display();
       if (b.isDone()) {
+        handleReset(1);
         b.reset(1);
       }
     }
-    b.display();
   }
 
   for (int i = 0; i < balls2.size(); i++) {
     Ball b = balls2.get(i);
-    
+
     if (firing2) {
       b.applyForce(gravity);
       b.update();
+      b.display();
       if (b.isDone()) {
+        handleReset(1);
         b.reset(2);
       }
     }
-    b.display();
+  }
+}
+
+void handleReset(int p) {
+  if (p == 1) {
+    balls1.add(new Ball(100, 400));
+    firing1 = false;
+  }
+  
+  if (p == 2) {
+    balls2.add(new Ball(100, 400));
+    firing2 = false;
   }
 }
 
@@ -50,10 +64,14 @@ void keyPressed() {
   }
 
   if (key == 's') {
-    balls1.get(balls1.size()).angDown();
+    if (!firing1) {
+      balls1.get(0).angDown();
+    }
   }
-  
+
   if (key == 'w') {
-    balls2.get(balls2.size()).angUp();
+    if (!firing1) {
+      balls2.get(0).angUp();
+    }
   }
 }
