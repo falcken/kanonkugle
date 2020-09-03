@@ -3,15 +3,16 @@ class Ball {
   PVector velocity;
   PVector acceleration;
 
-  float angle = 270;
+  float angle = 0;
   float startVelo;
+  float initialHeading;
 
-  Ball(float x, float y) {
+  Ball(float x, float y, float v) {
     location = new PVector(x, y);
-    velocity = new PVector(5, 0);
-    acceleration = new PVector();
+    velocity = new PVector(v, 0);
+    acceleration = new PVector(0, 0);
 
-    velocity.rotate(angle);
+    //velocity.rotate();
     startVelo = velocity.mag();
   }
 
@@ -33,15 +34,32 @@ class Ball {
 
   void angUp() {
     angle += 2;
-    println(angle);
-    velocity.rotate(angle);
+    velocity.rotate(0.05);
+    println(degrees(-velocity.heading()));
+    startVelo = velocity.mag();
+
+    if (angle > 358) {
+      angle = 0;
+    }
   }
 
   void angDown() {
     angle -= 2;
-    println(angle);
-    velocity.rotate(angle);
+    velocity.rotate(-0.05);
+    println(degrees(-velocity.heading()));
+    startVelo = velocity.mag();
+
+    if (angle < 2) {
+      angle = 360;
+    }
   }
+
+  /*void rotateToAngle() {
+   velocity.rotate(radians(angle));
+   println("rotating");
+   initialHeading = velocity.heading();
+   println(degrees(initialHeading));
+   }*/
 
   boolean isDone() {
     if (location.x+20 > width-20) {
@@ -71,16 +89,29 @@ class Ball {
     }
   }
 
-  void calcPath(PVector g) {
-    float gravity = 0.0982;
-    float cos = cos(radians(angle));
-    //float sin = sin(radians(angle));
-    
-    for (int x = 0; x < width; x += 10) {
-      float y = tan(radians(angle))*x-(gravity)/(2*sq(startVelo)*sq(cos))*sq(x);
-      //println(y);
-      fill(255, 0, 0);
-      ellipse(x, 400-y, 20, 20);
+  void calcPath(PVector g, int p) {
+    if (p == 1) {
+      float gravity = 0.0982;
+      float cos = cos(-velocity.heading());
+      //float sin = sin(radians(angle));
+
+      for (int x = 0; x < width; x += 20) {
+        float y = tan(-velocity.heading())*x-(gravity)/(2*sq(startVelo)*sq(cos))*sq(x);
+        //println(y);
+        fill(255, 0, 0);
+        ellipse(x+tank1.location.x+60, 400-y, 10, 10);
+      }
+    } else {
+      float gravity = 0.0982;
+      float cos = cos(velocity.heading());
+      //float sin = sin(radians(angle));
+
+      for (int x = 0; x < width; x += 20) {
+        float y = tan(velocity.heading())*x-(gravity)/(2*sq(startVelo)*sq(cos))*sq(x);
+        //println(y);
+        fill(0, 0, 255);
+        ellipse(tank2.location.x-x, 400-y, 10, 10);
+      }
     }
   }
 }
