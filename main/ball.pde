@@ -2,6 +2,7 @@ class Ball {
   PVector location;
   PVector velocity;
   PVector acceleration;
+  boolean isDown, isUp;
 
   float angle = 0;
   float startVelo;
@@ -14,6 +15,8 @@ class Ball {
 
     //velocity.rotate();
     startVelo = velocity.mag();
+    isUp = false;
+    isDown = false;
   }
 
   void applyForce(PVector f) {
@@ -24,6 +27,7 @@ class Ball {
     velocity.add(acceleration);
     location.add(velocity);
     acceleration.mult(0);
+
   }
 
   void display() {
@@ -90,6 +94,9 @@ class Ball {
   }
 
   void calcPath(PVector g, int p) {
+    if (isUp) angUp();
+    if (isDown) angDown();
+    
     if (p == 1) {
       float gravity = 0.0982;
       float cos = cos(-velocity.heading());

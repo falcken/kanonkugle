@@ -58,33 +58,60 @@ void draw() {
 
 void handleReset(int p) {
   if (p == 1) {
-    balls1.add(new Ball(100, 400, 8));
+    balls1.add(new Ball(tank1.location.x+55, 400, 8));
     firing1 = false;
   }
 
   if (p == 2) {
-    balls2.add(new Ball(900, 400, -8));
+    balls2.add(new Ball(tank2.location.x-5, 400, -8));
     firing2 = false;
   }
 }
 
-/*void keyPressed() {
-  switch (keyCode) {
-  case +'W':
-    balls1.get(0).angDown();
-  case +'S':
-    balls1.get(0).angUp();
-  case +'A':
-    tank1.moveLeft();
-  case +'D':
-    tank1.moveRight();
+void keyPressed() {
+  handlePress(keyCode, true);
+}
 
+void keyReleased() {
+  handlePress(keyCode, false);
+}
+
+void handlePress(int k, boolean b) {
+  switch (k) {
+  case +'W':
+    balls1.get(0).isDown = b;
+    break;
+  case +'S':
+    balls1.get(0).isUp = b;
+    break;
+  case +'A':
+    tank1.isLeft = b;
+    break;
+  case +'D':
+    tank1.isRight = b;
+    break;
+  case +'K':
+    balls2.get(0).isDown = b;
+    break;
+  case +'I':
+    balls2.get(0).isUp = b;
+    break;
+  case +'J':
+    tank2.isLeft = b;
+    break;
+  case +'L':
+    tank2.isRight = b;
+    break;
+  case +'E':
+    firing1 = true;
+    break;
+  case +'O':
+    firing2 = true;
     break;
   }
 }
-*/
 
-  void keyPressed() {
+/*  void keyPressed() {
   if (key == 'e' && !firing1) {
     //balls1.get(0).rotateToAngle();
     firing1 = true;
@@ -141,4 +168,4 @@ void handleReset(int p) {
       balls2.get(0).angUp();
     }
   }
-}
+}*/
