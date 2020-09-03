@@ -2,7 +2,7 @@ class Tank {
   PVector location;
   int score = 0;
   int player;
-  color fill = color(0,0,0);
+  color fill = color(0, 0, 0);
   boolean isRight, isLeft;
 
   Tank(float x, float y, int p) {
@@ -41,7 +41,7 @@ class Tank {
       }
     }
   }
-  
+
   void moveDown() {
     if (location.y <= 300) { 
       location.add(0, 8);
@@ -51,6 +51,12 @@ class Tank {
   void moveUp() {
     if (location.y > 75) {
       location.add(0, -8);
+    }
+  }
+
+  void Collision(Ball b) {
+      if (location.x + 60 <= b.location.x+20 && location.y <= b.location.y+20) {
+        println("Hurra");
     }
   }
 }

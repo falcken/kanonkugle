@@ -14,6 +14,8 @@ boolean firing2 = false;
 
 void setup () {
   size(1000, 600);
+  pixelDensity(2);
+  smooth();
   balls1.add(new Ball(100, 400, 8));
   balls2.add(new Ball(900, 400, -8));
 }
@@ -32,6 +34,7 @@ void draw() {
       b.applyForce(gravity);
       b.update();
       b.display();
+      tank2.Collision(b);
       //println(b.velocity.x);
       if (b.isDone()) {
         handleReset(1);
@@ -48,6 +51,7 @@ void draw() {
       b.applyForce(gravity);
       b.update();
       b.display();
+      tank1.Collision(b);
       if (b.isDone()) {
         handleReset(2);
         b.reset(2);
