@@ -55,8 +55,15 @@ class Tank {
   }
 
   void Collision(Ball b) {
-      if (location.x + 60 <= b.location.x+20 && location.y <= b.location.y+20) {
-        println("Hurra");
+    if (player == 2) {
+      if (b.location.x > location.x && b.location.x <= location.x+60 && b.location.y > location.y && b.location.y < location.y+30) {
+        println("Hurra1");
+        println(b.location.y);
+      }
+    } else {
+      if (b.location.x < location.x+60 && b.location.x > location.x && b.location.y > location.y && b.location.y < location.y+30) {
+        println("Hurra2");
+      }
     }
   }
 }
