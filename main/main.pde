@@ -4,6 +4,7 @@ Tank tank1 = new Tank(50, 400, 1);
 Tank tank2 = new Tank(890, 400, 2);
 HealthBar hb1 = new HealthBar(1);
 HealthBar hb2 = new HealthBar(2);
+Wall wallup = new Wall(200, 100, 500, 150);
 
 PVector gravity = new PVector(0, 0.0982);
 
@@ -26,6 +27,7 @@ void draw() {
 
   tank1.display();
   tank2.display();
+  wallup.display();
 
   for (int i = 0; i < balls1.size(); i++) {
     Ball b = balls1.get(i);
@@ -59,20 +61,20 @@ void draw() {
       }
     }
   }
-  
+
   for (int i = 0; i < 2; i++) {
     int th1 = tank1.checkHealth();
     int th2 = tank2.checkHealth();
-    
+
     hb1.displayHealth(th1);
     hb2.displayHealth(th2);
-    
+
     if (th1 == 0) {
-      
+
     }
-    
+
     if (th1 == 0) {
-      
+
     }
   }
 }
