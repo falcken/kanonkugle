@@ -23,7 +23,7 @@ class Tank {
   }
 
   void moveLeft() {
-    if (location.x >= 50 && player == 1 || player == 2 && location.x >= 500) { 
+    if (location.x >= 50 && player == 1 || player == 2 && location.x >= 550) { 
       location.add(-8, 0);
       if (player == 1) {
         if (!firing1) balls1.get(0).location.x = location.x+55;
