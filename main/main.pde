@@ -23,8 +23,8 @@ void setup () {
   size(1000, 600);
   pixelDensity(2);
   pow = loadImage("pow.png");
-  tank1 = loadImage("tank.png");
-  tank2 = loadImage("tank2.png");
+  tankImg1 = loadImage("tank.png");
+  tankImg2 = loadImage("tank.png");
   pow.resize(50,50);
   smooth();
   balls1.add(new Ball(100, 400, 8));
