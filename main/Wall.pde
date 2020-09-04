@@ -18,12 +18,12 @@ class Wall {
 
   void collision(Ball b, int player) {
     println(b.location.x);
-    if (b.location.x < xpos + 40 && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 2) {
+    if (b.location.x < xpos + 40 && b.location.x > xpos && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 2) {
       println("JATAK");
       handleReset(2);
       b.reset(2);
     }
-    if (b.location.x > xpos - 20 && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 1) {
+    if (b.location.x > xpos - 20 && b.location.x <  xpos+40 && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 1) {
       println("JATAK2");
       handleReset(1);
       b.reset(1);
