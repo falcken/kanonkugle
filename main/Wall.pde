@@ -20,11 +20,13 @@ class Wall {
     println(b.location.x);
     if (b.location.x < xpos + 40 && b.location.x > xpos && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 2) {
       println("JATAK");
+      pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
       handleReset(2);
       b.reset(2);
     }
     if (b.location.x > xpos - 20 && b.location.x <  xpos+40 && b.location.y > ypos+ymove && b.location.y < ypos+ymove+180 && player == 1) {
       println("JATAK2");
+      pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
       handleReset(1);
       b.reset(1);
     }

@@ -7,6 +7,8 @@ HealthBar hb1 = new HealthBar(1);
 HealthBar hb2 = new HealthBar(2);
 Wall wallup = new Wall(200, 100, 500, 150);
 PImage pow;
+PImage tank1;
+PImage tank2;
 
 
 PVector gravity = new PVector(0, 0.0982);
@@ -21,6 +23,8 @@ void setup () {
   size(1000, 600);
   pixelDensity(2);
   pow = loadImage("pow.png");
+  tank1 = loadImage("tank.png");
+  tank2 = loadImage("tank2.png");
   pow.resize(50,50);
   smooth();
   balls1.add(new Ball(100, 400, 8));

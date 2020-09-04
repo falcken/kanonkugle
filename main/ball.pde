@@ -36,21 +36,27 @@ class Ball {
   }
 
   void angUp() {
-    //if (angle <  85 && angle < 3) {
-      angle += 2;
-      velocity.rotate(0.05);
-      println(degrees(-velocity.heading()));
+    if (true) {
+      angle += 1;
+      velocity.rotate(0.04);
+      println("UP: "+degrees(-velocity.heading()));
       startVelo = velocity.mag();
-    //}
+      if (degrees(-velocity.heading()) > 86 || degrees(-velocity.heading()) < -29) {
+        velocity.rotate(-0.04);
+      }
+    }
   }
 
   void angDown() {
-    //if (angle <  85 && angle < 3) {
-      angle -= 2;
-      velocity.rotate(-0.05);
-      println(degrees(-velocity.heading()));
+    if (true) {
+      angle -= 1;
+      velocity.rotate(-0.04);
+      println("DOWN: "+degrees(-velocity.heading()));
       startVelo = velocity.mag();
-    //}
+      if (degrees(-velocity.heading()) > 86 || degrees(-velocity.heading()) < -29) {
+        velocity.rotate(0.04);
+      }
+    }
   }
 
   /*void rotateToAngle() {
@@ -89,8 +95,8 @@ class Ball {
   }
 
   void calcPath(PVector g, int p) {
-    if (isUp) angUp();
-    if (isDown) angDown();
+    if (isUp/* && degrees(-velocity.heading()) < 86 && degrees(-velocity.heading()) > -29*/) angUp();
+    if (isDown/* && degrees(-velocity.heading()) < 86 && degrees(-velocity.heading()) > -2^*/) angDown();
 
     if (p == 1) {
       float gravity = 0.0982;
