@@ -65,6 +65,7 @@ class Tank {
       if (b.location.x > location.x && b.location.x <= location.x+60 && b.location.y > location.y && b.location.y < location.y+30) {
         println("Hurra1");
         health--;
+        pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
         handleReset(1);
         b.reset(1);
       }
@@ -72,6 +73,7 @@ class Tank {
       if (b.location.x < location.x+60 && b.location.x > location.x && b.location.y > location.y && b.location.y < location.y+30) {
         health--;
         println("Hurra2");
+        pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
         handleReset(2);
         b.reset(2);
       }
