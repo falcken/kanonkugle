@@ -81,14 +81,14 @@ void draw() {
 
 void handleReset(int p) {
   if (p == 1) {
-    balls1.get(0).reset(1);
     balls1.add(new Ball(tank1.location.x+55, 400, 8));
+    //balls1.get(0).reset(1);
     firing1 = false;
   }
 
   if (p == 2) {
-    balls2.get(0).reset(2);
     balls2.add(new Ball(tank2.location.x-5, 400, -8));
+    //balls2.get(0).reset(2);
     firing2 = false;
   }
 }

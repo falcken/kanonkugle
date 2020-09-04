@@ -66,12 +66,14 @@ class Tank {
         println("Hurra1");
         health--;
         handleReset(1);
+        b.reset(1);
       }
     } else {
       if (b.location.x < location.x+60 && b.location.x > location.x && b.location.y > location.y && b.location.y < location.y+30) {
         health--;
         println("Hurra2");
         handleReset(2);
+        b.reset(2);
       }
     }
   }

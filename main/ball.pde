@@ -27,7 +27,6 @@ class Ball {
     velocity.add(acceleration);
     location.add(velocity);
     acceleration.mult(0);
-
   }
 
   void display() {
@@ -37,25 +36,21 @@ class Ball {
   }
 
   void angUp() {
-    angle += 2;
-    velocity.rotate(0.05);
-    println(degrees(-velocity.heading()));
-    startVelo = velocity.mag();
-
-    if (angle > 358) {
-      angle = 0;
-    }
+    //if (angle <  85 && angle < 3) {
+      angle += 2;
+      velocity.rotate(0.05);
+      println(degrees(-velocity.heading()));
+      startVelo = velocity.mag();
+    //}
   }
 
   void angDown() {
-    angle -= 2;
-    velocity.rotate(-0.05);
-    println(degrees(-velocity.heading()));
-    startVelo = velocity.mag();
-
-    if (angle < 2) {
-      angle = 360;
-    }
+    //if (angle <  85 && angle < 3) {
+      angle -= 2;
+      velocity.rotate(-0.05);
+      println(degrees(-velocity.heading()));
+      startVelo = velocity.mag();
+    //}
   }
 
   /*void rotateToAngle() {
@@ -96,7 +91,7 @@ class Ball {
   void calcPath(PVector g, int p) {
     if (isUp) angUp();
     if (isDown) angDown();
-    
+
     if (p == 1) {
       float gravity = 0.0982;
       float cos = cos(-velocity.heading());
