@@ -4,7 +4,7 @@ Tank tank1 = new Tank(50, 400, 1);
 Tank tank2 = new Tank(890, 400, 2);
 HealthBar hb1 = new HealthBar(1);
 HealthBar hb2 = new HealthBar(2);
-Wall wallup = new Wall(200, 100, 500, 150);
+Wall wallup = new Wall(1000, 100, 500, 150);
 
 PVector gravity = new PVector(0, 0.0982);
 
@@ -38,6 +38,7 @@ void draw() {
       b.update();
       b.display();
       tank2.Collision(b);
+      wallup.collision(b, 1);
       //println(b.velocity.x);
       if (b.isDone()) {
         handleReset(1);
@@ -55,6 +56,7 @@ void draw() {
       b.update();
       b.display();
       tank1.Collision(b);
+      wallup.collision(b, 2);
       if (b.isDone()) {
         handleReset(2);
         b.reset(2);
