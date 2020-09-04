@@ -1,10 +1,12 @@
 ArrayList<Ball> balls1 = new ArrayList<Ball>();
 ArrayList<Ball> balls2 = new ArrayList<Ball>();
+ArrayList<Pow> pows = new ArrayList<Pow>();
 Tank tank1 = new Tank(50, 400, 1);
 Tank tank2 = new Tank(890, 400, 2);
 HealthBar hb1 = new HealthBar(1);
 HealthBar hb2 = new HealthBar(2);
 Wall wallup = new Wall(200, 100, 500, 150);
+PImage pow;
 
 PVector gravity = new PVector(0, 0.0982);
 
@@ -17,6 +19,8 @@ boolean firing2 = false;
 void setup () {
   size(1000, 600);
   pixelDensity(2);
+  pow = loadImage("pow.png");
+  pow.resize(50,50);
   smooth();
   balls1.add(new Ball(100, 400, 8));
   balls2.add(new Ball(900, 400, -8));
@@ -24,10 +28,14 @@ void setup () {
 
 void draw() {
   background(255);
-
+  
   tank1.display();
   tank2.display();
   wallup.display();
+  
+  for (int i = 0; i < pows.size(); i++) {
+    pows.get(i).displayPow();
+  }
 
   for (int i = 0; i < balls1.size(); i++) {
     Ball b = balls1.get(i);
@@ -91,6 +99,12 @@ void handleReset(int p) {
     //balls2.get(0).reset(2);
     firing2 = false;
   }
+}
+
+void displayPow(float x, float y) {
+}
+
+void hidePow(float x, float y) {
 }
 
 void keyPressed() {
