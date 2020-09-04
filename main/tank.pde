@@ -4,9 +4,11 @@ class Tank {
   int player;
   color fill = color(0, 0, 0);
   boolean isRight, isLeft;
+  int health;
 
   Tank(float x, float y, int p) {
     player = p;
+    health = 4;
     location = new PVector(x, y);
     isRight = false;
     isLeft = false;
@@ -53,16 +55,23 @@ class Tank {
       location.add(0, -8);
     }
   }
+  
+  int checkHealth() {
+    return health;
+  }
 
   void Collision(Ball b) {
     if (player == 2) {
       if (b.location.x > location.x && b.location.x <= location.x+60 && b.location.y > location.y && b.location.y < location.y+30) {
         println("Hurra1");
-        println(b.location.y);
+        health--;
+        handleReset(1);
       }
     } else {
       if (b.location.x < location.x+60 && b.location.x > location.x && b.location.y > location.y && b.location.y < location.y+30) {
+        health--;
         println("Hurra2");
+        handleReset(2);
       }
     }
   }

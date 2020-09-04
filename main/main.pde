@@ -2,7 +2,8 @@ ArrayList<Ball> balls1 = new ArrayList<Ball>();
 ArrayList<Ball> balls2 = new ArrayList<Ball>();
 Tank tank1 = new Tank(50, 400, 1);
 Tank tank2 = new Tank(890, 400, 2);
-
+HealthBar hb1 = new HealthBar(1);
+HealthBar hb2 = new HealthBar(2);
 
 PVector gravity = new PVector(0, 0.0982);
 
@@ -58,15 +59,33 @@ void draw() {
       }
     }
   }
+  
+  for (int i = 0; i < 2; i++) {
+    int th1 = tank1.checkHealth();
+    int th2 = tank2.checkHealth();
+    
+    hb1.displayHealth(th1);
+    hb2.displayHealth(th2);
+    
+    if (th1 == 0) {
+      
+    }
+    
+    if (th1 == 0) {
+      
+    }
+  }
 }
 
 void handleReset(int p) {
   if (p == 1) {
+    balls1.get(0).reset(1);
     balls1.add(new Ball(tank1.location.x+55, 400, 8));
     firing1 = false;
   }
 
   if (p == 2) {
+    balls2.get(0).reset(2);
     balls2.add(new Ball(tank2.location.x-5, 400, -8));
     firing2 = false;
   }
