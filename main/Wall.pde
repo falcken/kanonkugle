@@ -16,4 +16,7 @@ class Wall{
     rect(xpos, ypos+ymove, 20, 180);
   }
   
+  void collision(){
+    
+  }
 }
