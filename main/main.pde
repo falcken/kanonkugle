@@ -7,8 +7,8 @@ HealthBar hb1 = new HealthBar(1);
 HealthBar hb2 = new HealthBar(2);
 Wall wallup = new Wall(200, 100, 500, 150);
 PImage pow;
-PImage tank1;
-PImage tank2;
+PImage tankImg1;
+PImage tankImg2;
 
 
 PVector gravity = new PVector(0, 0.0982);
