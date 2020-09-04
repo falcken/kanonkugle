@@ -2,7 +2,7 @@ ArrayList<Ball> balls1 = new ArrayList<Ball>();
 ArrayList<Ball> balls2 = new ArrayList<Ball>();
 Tank tank1 = new Tank(50, 400, 1);
 Tank tank2 = new Tank(890, 400, 2);
-
+Wall wallup = new Wall(200, 100, 500, 150);
 
 PVector gravity = new PVector(0, 0.0982);
 
@@ -25,6 +25,7 @@ void draw() {
 
   tank1.display();
   tank2.display();
+  wallup.display();
 
   for (int i = 0; i < balls1.size(); i++) {
     Ball b = balls1.get(i);
