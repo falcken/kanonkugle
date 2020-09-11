@@ -31,11 +31,13 @@ class Wall {
       handleReset(1);
       b.reset(1);
     }
-    if(b.location.x < xpos + 40 && b.location.x > xpos && b.location.y > 350 && b.location.y < 650 && player == 2) {
+    if (b.location.x < xpos + 40 && b.location.x > xpos && b.location.y > 350 && b.location.y < 650 && player == 2) {
+      pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
       handleReset(2);
       b.reset(2);
     }
-    if(b.location.x > xpos - 20 && b.location.x <  xpos+40 && b.location.y > 350 && b.location.y < 650 && player == 1) {
+    if (b.location.x > xpos - 20 && b.location.x <  xpos+40 && b.location.y > 350 && b.location.y < 650 && player == 1) {
+      pows.add(new Pow(b.location.x-20, b.location.y-20, pows.size()+1));
       handleReset(1);
       b.reset(1);
     }

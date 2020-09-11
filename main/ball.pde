@@ -3,15 +3,17 @@ class Ball {
   PVector velocity;
   PVector acceleration;
   boolean isDown, isUp;
+  int player;
 
   float angle = 0;
   float startVelo;
   float initialHeading;
 
-  Ball(float x, float y, float v) {
+  Ball(float x, float y, float v, int p) {
     location = new PVector(x, y);
     velocity = new PVector(v, 0);
     acceleration = new PVector(0, 0);
+    player = p;
 
     //velocity.rotate();
     startVelo = velocity.mag();
@@ -39,11 +41,11 @@ class Ball {
     if (true) {
       angle += 1;
       velocity.rotate(0.04);
-      println("UP: "+degrees(-velocity.heading()));
+      println("UP: "+degrees(-velocity.heading())+", PLAYER = "+player);
       startVelo = velocity.mag();
-      if (degrees(-velocity.heading()) > 86 || degrees(-velocity.heading()) < -29) {
-        velocity.rotate(-0.04);
-      }
+      /*if (false && degrees(-velocity.heading()) > 86 && player == 1|| degrees(-velocity.heading()) < -29 && player == 1 /*|| degrees(-velocity.heading()) < -150 && player == 2 || degrees(-velocity.heading()) > 95 && player == 2) {
+       velocity.rotate(-0.04);
+       }*/
     }
   }
 
@@ -51,11 +53,11 @@ class Ball {
     if (true) {
       angle -= 1;
       velocity.rotate(-0.04);
-      println("DOWN: "+degrees(-velocity.heading()));
+      println("DOWN: "+degrees(-velocity.heading())+", PLAYER = "+player);
       startVelo = velocity.mag();
-      if (degrees(-velocity.heading()) > 86 || degrees(-velocity.heading()) < -29) {
-        velocity.rotate(0.04);
-      }
+      /*if (false && degrees(-velocity.heading()) > 86 && player == 1 || degrees(-velocity.heading()) < -29 && player == 1 || degrees(-velocity.heading()) > -150 && player == 2 && degrees(-velocity.heading()) < -150 && player == 2 || degrees(-velocity.heading()) < 95 && player == 2 && degrees(-velocity.heading()) > 180 && player == 2) {
+       velocity.rotate(0.04);
+       }*/
     }
   }
 
@@ -97,9 +99,9 @@ class Ball {
   void calcPath(PVector g, int p) {
     if (isUp/* && degrees(-velocity.heading()) < 86 && degrees(-velocity.heading()) > -29*/) angUp();
     if (isDown/* && degrees(-velocity.heading()) < 86 && degrees(-velocity.heading()) > -2^*/) angDown();
+    float gravity = 0.4;
 
     if (p == 1) {
-      float gravity = 0.0982;
       float cos = cos(-velocity.heading());
       //float sin = sin(radians(angle));
 
@@ -110,7 +112,6 @@ class Ball {
         ellipse(x+tank1.location.x+60, 400-y, 10, 10);
       }
     } else {
-      float gravity = 0.0982;
       float cos = cos(velocity.heading());
       //float sin = sin(radians(angle));
 
